@@ -1,0 +1,13 @@
+.content{
+    padding: 2rem;
+
+}
+
+.libros{
+    margin-top: 3%;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
