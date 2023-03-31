@@ -1,26 +1,19 @@
-import { useState, useEffect } from 'react'
 import ItemDetail from '../ItemDetail';
-import Products from '../../mocks/products';
+import {doc, getDoc, getFirestore} from "firebase/firestore";
+import {useState, useEffect, useContext } from 'react';
+import { Context } from '../../context';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import { useParams } from 'react-router-dom';
 
-function ItemDetailContainer({Id}){
 
-    const [Detail,setDetail] = useState([]);
+function ItemDetailContainer(){
    
-    useEffect(()=>{
-        const products_promise = new Promise((resolve, reject) => setTimeout(() => resolve (Products),2000));
-
-        products_promise
-        .then((response) => {
-            const detalle = response.find((a) => parseInt(a.id) === parseInt(Id))
-            setDetail(detalle)
-        })
-        .catch((err) => console.log(err));
-    },[Id]);
-
     return(
         <div>
-            <ItemDetail products={Detail}/>
-            <p>{console.log(Detail)}</p>
+            <Card className="text-center" style={{padding: '2rem 0px 2rem 0px'}}>
+            <ItemDetail/>
+            </Card>
         </div>
     )
 }

@@ -12,11 +12,12 @@ function NavBar(){
                 <NavLink to="/">
                 <img
                 alt=""
-                src="../../../assets/logo.png"
+                src="../../assets/logo.png"
                 width="150"
                 height="53"
                 className="d-inline-block align-top"
                 />
+                <img src="../../assets/logo.png" alt="" />
                 </NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
