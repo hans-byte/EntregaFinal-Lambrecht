@@ -4,36 +4,31 @@ export const Context = createContext();
 export function CustomProvider({children}){
 const [itemsAdded,setItemsAdded] = useState([]);
 
-    function onAdd(detail,cantidad) {
-        const enCarrito = isIncart(detail);
-        if (enCarrito){
-            const productAModificar = itemsAdded.find((itemsAdded) => itemsAdded.id === detail.id);
-            const productModificado = {
-                ...productAModificar,
-                cantidad: productAModificar.cantidad + cantidad
+    function onAdd(detail,quantity) {
+        const inCart = isIncart(detail);
+        if (inCart){
+            const productToModify = itemsAdded.find((itemsAdded) => itemsAdded.id === detail.id);
+            const productModified= {
+                ...productToModify,
+                quantity: productToModify.quantity + quantity
             }
-            setItemsAdded((prev) => prev.map((prevState) => prevState.id === detail.id ? productModificado : prevState));
+            setItemsAdded((prev) => prev.map((prevState) => prevState.id === detail.id ? productModified : prevState));
         }else{
-            setItemsAdded((prev) => prev.concat({...detail,cantidad: cantidad}));
+            setItemsAdded((prev) => prev.concat({...detail,quantity: quantity}));
         }
     }
-
 
     function clear(){
         setItemsAdded([])
     }
 
-    function removeItem(itemId){
-        if (itemsAdded.length == 1){
-            return clear()
-        }else{
-            return setItemsAdded(itemsAdded.forEach((item,index) => item.id === String(itemId) ? itemsAdded.splice(index,1): item));
-        }
+    function removeItem(itemId){ 
+        setItemsAdded(itemsAdded.filter( item => item.id !== String(itemId)))
     }
 
 
     function isIncart(detail) {
-        return itemsAdded.some((productoAñadido) => productoAñadido.id === detail.id)
+        return itemsAdded.some((add) => add.id === detail.id)
     }
 
     const onRemove = () =>{

@@ -12,24 +12,23 @@ function NavBar(){
                 <NavLink to="/">
                 <img
                 alt=""
-                src="../../assets/logo.png"
+                src="/src/assets/logo.png"
                 width="150"
                 height="53"
                 className="d-inline-block align-top"
                 />
-                <img src="../../assets/logo.png" alt="" />
                 </NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                        <NavLink style={{padding: "10px",  color: "grey", textDecoration:"none"}} to={'/category/Auto-ayuda'}>
-                        Auto-ayuda
+                        <NavLink style={{padding: "10px",  color: "grey", textDecoration:"none"}} to={'/category/Self-help'}>
+                        Self-help
                         </NavLink>
-                        <NavLink style={{padding: "10px",  color: "grey", textDecoration:"none"}} to={'/category/Aventura'}>
-                        Aventura
+                        <NavLink style={{padding: "10px",  color: "grey", textDecoration:"none"}} to={'/category/Adventure'}>
+                        Adventure
                         </NavLink>
-                        <NavLink style={{padding: "10px",  color: "grey", textDecoration:"none"}} to={'/category/Biografía'}>
-                        Biografía
+                        <NavLink style={{padding: "10px",  color: "grey", textDecoration:"none"}} to={'/category/Biograpgy'}>
+                        Biography
                         </NavLink>
                         <NavLink style={{padding: "10px",  color: "grey", textDecoration:"none"}} to={'/category/Drama'}>
                         Drama

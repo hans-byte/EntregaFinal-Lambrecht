@@ -6,8 +6,10 @@ import {collection, getDocs, getFirestore, query, where} from "firebase/firestor
 function ItemListContainer({boolcategory,categoryId}){
 
     const [agregar,setAgregar] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        setIsLoading(true)
         const db = getFirestore()
         const itemsCollection = collection(db,'items')
 
@@ -16,23 +18,26 @@ function ItemListContainer({boolcategory,categoryId}){
             getDocs(queryResults).then((snapshot) => {
                 const docs = snapshot.docs;
                 setAgregar(docs.map((documentos) => ({id: documentos.id, ...documentos.data()})))
+                setIsLoading(false);
             }).catch((error) => console.log(error))
         }else{
         getDocs(itemsCollection).then((snapshot) => {
             const docs = snapshot.docs;
             setAgregar(docs.map((documentos) => ({id: documentos.id, ...documentos.data()})))
+            setIsLoading(false);
         }).catch((error) => console.log(error))
         }
         }, [categoryId]);
 
-    if (agregar){
-        <div style={{display:"flex", justifyContent:"center", textAlign:"center",flexDirection:"column", alignItems:"center"}}> <RingLoader color="#36d7b7"/> <h2>Cargando</h2></div>
-    }
+    if (isLoading){
+        return <div style={{display:"flex", justifyContent:"center", textAlign:"center",flexDirection:"column", alignItems:"center", paddingTop:"10rem"}}> <RingLoader color="#36d7b7"/> <h2>Loading</h2></div>
+    }else{
     return(
         <div>
             <ItemList products={agregar}/>
         </div>
     )
+}
 }
 
 export default ItemListContainer;

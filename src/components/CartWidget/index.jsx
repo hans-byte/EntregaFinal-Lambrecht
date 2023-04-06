@@ -11,7 +11,7 @@ function CartWidget(){
             return 0
         }else{
         Object.values(itemsAdded).forEach((item) => {
-            sumTotal += item.cantidad
+            sumTotal += item.quantity
         })
         return sumTotal
     }
@@ -19,7 +19,7 @@ function CartWidget(){
     return(
         <div className="cartwidget">
             <NavLink style={{display:"flex",flexDirection:"row",alignItems:"flex-end", justifyContent:"center", gap:"1rem",  color: "grey", textDecoration:"none"}} to="/cart">
-            <img src="https://img.icons8.com/color/48/null/add-shopping-cart--v1.png"/>
+            <img src="https://img.icons8.com/arcade/64/null/shopping-bag-full.png"/>
             <p>{sum()}</p>
             </NavLink>
         </div>

@@ -8,27 +8,30 @@ function CartView() {
     const [itemsToPurchase,setItemsToPurchase] = useState([]);
     
     function pay(purchase){
-      const p_q = purchase.map((item) => (item.price * item.cantidad))
-      return setItemsToPurchase((total) => total.concat({...purchase,total: p_q}));
+      purchase.forEach(element => {
+        element.total = element.quantity * element.price
+      });
+
+      return setItemsToPurchase(purchase)
     }
 
     if (!itemsAdded || itemsAdded.length === 0){
       return (
       <div style={{paddingTop:"10rem", textAlign:"center"}}>
-        <h2>Ups! Nada por aqui... [aún]</h2>
+        <h2>Ups! Nothing here... [yet]</h2>
       </div>
       )
     }else{
     return (
-      <div style={{margin: "10rem 1rem 0 rem 1rem"}}>
-        <Table striped bordered hover >
+      <div style={{textAlign:"center"}}>
+        <h2 style={{margin:"2rem 0rem 2rem 0rem"}}>Your cart</h2>
+        <Table striped bordered hover>
           <thead>
             <tr>
-              <th>Item</th>
-              <th>Libro</th>
-              <th>Cantidad</th>
-
-              <th>Precio</th>
+              <th>Book</th>
+              <th>Author</th>
+              <th>Quantity</th>
+              <th>Price</th>
               <th>Total</th>
               <th>Remove</th>
             </tr>
@@ -36,21 +39,21 @@ function CartView() {
           <tbody>
           {itemsAdded.map((product) => {
           return(
-            <tr>
-              <td>{product.id}</td>
+            <tr key={product.id}>
               <td>{product.name}</td>
-              <td>{product.cantidad}</td>
+              <td>{product.author}</td>
+              <td>{product.quantity}</td>
               <td>{product.price}</td>
-              <td>{product.price * product.cantidad}</td>
-              <td><Button variant="outline-danger" onClick={() => removeItem(product.id)}>Quitar del carrito</Button></td>
+              <td>{product.price * product.quantity}</td>
+              <td><Button variant="outline-danger" onClick={() => removeItem(product.id)}>Remove from the Cart</Button></td>
             </tr>
           )
           })}
           </tbody>
         </Table>
         <div style={{display:"flex",flexDirection:"row",alignItems:"center", justifyContent:"center", gap:"20px"}}>
-          <Button variant="success" onClick={() => pay(itemsAdded)}>Pagar</Button>
-          <Button variant="danger" onClick={clear} >Limpiar carrito</Button>
+          <Button variant="success" onClick={() => pay(itemsAdded)}>Proceed to Pay</Button>
+          <Button variant="danger" onClick={clear} >Clean</Button>
         </div>
       </div>
     )
