@@ -27,7 +27,7 @@ function NavBar(){
                         <NavLink style={{padding: "10px",  color: "grey", textDecoration:"none"}} to={'/category/Adventure'}>
                         Adventure
                         </NavLink>
-                        <NavLink style={{padding: "10px",  color: "grey", textDecoration:"none"}} to={'/category/Biograpgy'}>
+                        <NavLink style={{padding: "10px",  color: "grey", textDecoration:"none"}} to={'/category/Biography'}>
                         Biography
                         </NavLink>
                         <NavLink style={{padding: "10px",  color: "grey", textDecoration:"none"}} to={'/category/Drama'}>

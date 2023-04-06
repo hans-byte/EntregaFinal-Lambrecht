@@ -12,7 +12,10 @@ function CartView() {
         element.total = element.quantity * element.price
       });
 
-      return setItemsToPurchase(purchase)
+      return (
+      setItemsToPurchase(purchase),
+      console.log(itemsToPurchase)
+      )
     }
 
     if (!itemsAdded || itemsAdded.length === 0){
